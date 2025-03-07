@@ -91,6 +91,7 @@
             position: absolute;
             bottom: 50px;
             z-index: 5;
+            transition: transform 3s ease-in-out;
         }
 
         /* Image Style */
@@ -100,19 +101,7 @@
             object-fit: cover;
         }
 
-        /* Color Splash Effect */
-        .color-splash {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 10%, transparent 70%);
-            border-radius: 50%;
-            transform: scale(1);
-            opacity: 1;
-            transition: transform 0.5s, opacity 1s;
-        }
-
-        /* Floating Play/Pause Music Button */
+        /* Play/Pause Button */
         .play-pause-btn {
             position: fixed;
             bottom: 20px;
@@ -145,7 +134,7 @@
     <div class="happy-holi-text">Happy Holi</div>
 
     <!-- Image section (Bottom aligned) -->
-    <div class="photo-container">
+    <div class="photo-container" id="imageContainer">
         <img src="pic/kishan (2).jpg" alt="Holi Friends">
     </div>
 
@@ -156,10 +145,11 @@
     </audio>
 
     <!-- Play/Pause Button -->
-    <button class="play-pause-btn" id="playPauseBtn" onclick="toggleMusic()">⏯</button>
+    <button class="play-pause-btn" id="playPauseBtn" onclick="toggleRotation()">⏯</button>
 
     <script>
         let isPlaying = true;
+        let isRotating = false;
 
         // Function for color splash effect
         function splashColor(event) {
@@ -184,21 +174,31 @@
             }, 1000);
         }
 
-        // Play/Pause Music toggle function
-        function toggleMusic() {
-            const music = document.getElementById("holiMusic");
+        // Function to toggle image rotation
+        function toggleRotation() {
+            const imageContainer = document.getElementById("imageContainer");
             const button = document.getElementById("playPauseBtn");
 
-            if (isPlaying) {
-                music.pause();
-                button.textContent = "▶"; // Change to play button
+            if (isRotating) {
+                imageContainer.style.transform = "rotate(0deg)";
+                button.textContent = "⏯"; // Change to play button
             } else {
-                music.play();
+                imageContainer.style.transform = "rotate(360deg)";
+                imageContainer.style.animation = "rotateAnimation 10s infinite linear";
                 button.textContent = "⏸"; // Change to pause button
             }
 
-            isPlaying = !isPlaying;
+            isRotating = !isRotating;
         }
+
+        // Adding rotation animation via CSS keyframes
+        const styleSheet = document.styleSheets[0];
+        styleSheet.insertRule(`
+            @keyframes rotateAnimation {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        `, styleSheet.cssRules.length);
     </script>
 
 </body>
