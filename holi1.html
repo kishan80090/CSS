@@ -6,200 +6,114 @@
     <title>Holi Celebration</title>
     <style>
         body {
-            background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #47ff00, #00ffee, #0033ff, #7a00ff, #ff00ff);
-            background-size: 400% 400%;
-            animation: holiColors 5s infinite alternate;
-            overflow: hidden;
-            text-align: center;
             font-family: 'Arial', sans-serif;
-            position: relative;
-            height: 100vh;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
+            background-color: #242222;
+            text-align: center;
+            padding: 50px;
         }
 
-        @keyframes holiColors {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
+        h1 {
+            color: #ff3366;
+            font-size: 3em;
         }
 
-        /* Happy Holi Text Styling */
-        .happy-holi-text {
-            font-size: 80px;
-            font-weight: bold;
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        button {
+            background-color: #ff3366;
             color: white;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.4);
-            animation: colorChange 3s infinite alternate, textBloom 3s infinite ease-in-out;
-            position: absolute;
-            top: 10%;
-            width: 100%;
-            z-index: 10;
-        }
-
-        @keyframes colorChange {
-            0% {
-                color: #ff0000;
-                text-shadow: 0 0 10px #ff0000, 0 0 20px #ff7300, 0 0 30px #ffeb00;
-            }
-            25% {
-                color: #ff7300;
-                text-shadow: 0 0 10px #ff7300, 0 0 20px #ffeb00, 0 0 30px #47ff00;
-            }
-            50% {
-                color: #ffeb00;
-                text-shadow: 0 0 10px #ffeb00, 0 0 20px #47ff00, 0 0 30px #00ffee;
-            }
-            75% {
-                color: #47ff00;
-                text-shadow: 0 0 10px #47ff00, 0 0 20px #00ffee, 0 0 30px #0033ff;
-            }
-            100% {
-                color: #0033ff;
-                text-shadow: 0 0 10px #0033ff, 0 0 20px #7a00ff, 0 0 30px #ff00ff;
-            }
-        }
-
-        /* Text Bloom Animation */
-        @keyframes textBloom {
-            0% {
-                font-size: 80px;
-                transform: scale(1);
-            }
-            50% {
-                font-size: 120px;
-                transform: scale(1.2);
-            }
-            100% {
-                font-size: 80px;
-                transform: scale(1);
-            }
-        }
-
-        /* Image Container */
-        .photo-container {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            overflow: hidden;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-            border: 5px solid white;
-            position: absolute;
-            bottom: 50px;
-            z-index: 5;
-            transition: transform 3s ease-in-out;
-        }
-
-        /* Image Style */
-        .photo-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Play/Pause Button */
-        .play-pause-btn {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #ff7300;
-            color: white;
-            padding: 15px 25px;
-            font-size: 18px;
+            font-size: 1.5em;
+            padding: 15px 30px;
             border: none;
-            border-radius: 50px;
+            border-radius: 5px;
             cursor: pointer;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-            z-index: 100;
+            transition: background-color 0.3s;
         }
 
-        .play-pause-btn:hover {
-            background-color: #ff0000;
+        button:hover {
+            background-color: #ff66b3;
         }
 
-        .play-pause-btn:focus {
-            outline: none;
+        #colorsContainer {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
 
+        .color-box {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: inline-block;
+            opacity: 0.3;
+            background-size: cover;
+            background-position: center;
+            transition: opacity 1s;
+        }
+
+        .color-box:hover {
+            opacity: 1;
+        }
+
+        /* Custom background images for each color box */
+        .color-box:nth-child(1) {
+            background-image: url('pic/kishan\ \(2\).jpg'); /* Replace with your image URL */
+        }
+
+        .color-box:nth-child(2) {
+            background-image: url('pic/kishan\ \(2\).jpg'); /* Replace with your image URL */
+        }
+
+        .color-box:nth-child(3) {
+            background-image: url('pic/kishan\ \(2\).jpg'); /* Replace with your image URL */
+        }
+
+        .color-box:nth-child(4) {
+            background-image: url('pic/kishan\ \(2\).jpg'); /* Replace with your image URL */
+        }
     </style>
 </head>
-<body onclick="splashColor(event)">
-
-    <!-- Happy Holi Text -->
-    <div class="happy-holi-text">Happy Holi</div>
-
-    <!-- Image section (Bottom aligned) -->
-    <div class="photo-container" id="imageContainer">
-        <img src="pic/kishan (2).jpg" alt="Holi Friends">
+<body>
+    <div class="container">
+        <h1>Happy Holi!</h1>
+        <p>Click the button below to celebrate Holi with colors!</p>
+        <button id="celebrateBtn">Celebrate Holi</button>
+    </div>
+    
+    <div id="colorsContainer">
+        <div class="color-box"></div>
+        <div class="color-box"></div>
+        <div class="color-box"></div>
+        <div class="color-box"></div>
     </div>
 
-    <!-- Music Player -->
-    <audio id="holiMusic" loop autoplay>
-        <source src="happy-holi.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
-    <!-- Play/Pause Button -->
-    <button class="play-pause-btn" id="playPauseBtn" onclick="toggleRotation()">⏯</button>
-
     <script>
-        let isPlaying = true;
-        let isRotating = false;
+        document.getElementById('celebrateBtn').addEventListener('click', function() {
+            const colors = document.querySelectorAll('.color-box');
+            
+            colors.forEach(color => {
+                // Random color effect when clicking the button
+                let randomOpacity = Math.random() + 0.5;
+                color.style.opacity = randomOpacity;
+            });
+            
+            // Change the background color to give the feel of the Holi festival
+            document.body.style.backgroundColor = getRandomColor();
+        });
 
-        // Function for color splash effect
-        function splashColor(event) {
-            const splash = document.createElement("div");
-            splash.classList.add("color-splash");
-
-            splash.style.left = `${event.clientX - 25}px`;
-            splash.style.top = `${event.clientY - 25}px`;
-
-            let colors = ["#ff0000", "#ff7300", "#ffeb00", "#47ff00", "#00ffee", "#0033ff", "#7a00ff", "#ff00ff"];
-            splash.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-
-            document.body.appendChild(splash);
-
-            setTimeout(() => {
-                splash.style.transform = "scale(3)";
-                splash.style.opacity = "0";
-            }, 100);
-
-            setTimeout(() => {
-                splash.remove();
-            }, 1000);
-        }
-
-        // Function to toggle image rotation
-        function toggleRotation() {
-            const imageContainer = document.getElementById("imageContainer");
-            const button = document.getElementById("playPauseBtn");
-
-            if (isRotating) {
-                imageContainer.style.transform = "rotate(0deg)";
-                button.textContent = "⏯"; // Change to play button
-            } else {
-                imageContainer.style.transform = "rotate(360deg)";
-                imageContainer.style.animation = "rotateAnimation 10s infinite linear";
-                button.textContent = "⏸"; // Change to pause button
+        // Function to generate random color
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
             }
-
-            isRotating = !isRotating;
+            return color;
         }
-
-        // Adding rotation animation via CSS keyframes
-        const styleSheet = document.styleSheets[0];
-        styleSheet.insertRule(`
-            @keyframes rotateAnimation {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(360deg); }
-            }
-        `, styleSheet.cssRules.length);
     </script>
-
 </body>
 </html>
